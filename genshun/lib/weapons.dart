@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'weapons/skywardblade.dart';
+import 'search.dart';
+import 'credits.dart';
 
 void main() {
   runApp(const Weapons());
@@ -33,6 +36,65 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFB228EE),
+        automaticallyImplyLeading: true,
+        title: const Text(
+          'Weapons',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            color: Color(0xFFDED8D8),
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchApp(),
+                ),
+              );
+            },
+          )
+        ],
+        centerTitle: false,
+        elevation: 4,
+      ),
+      drawer: Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: const Text('Material Impact'),
+              accountEmail: const Text(''),
+              currentAccountPicture: CircleAvatar(
+                child: Image.network(
+                  'https://preview.redd.it/6fhx66bcy2861.png?width=408&format=png&auto=webp&s=0e56bae056a5416e14a7e9406c197bbc16b7d930',
+                  width: 400,
+                  height: 400,
+                ),
+                backgroundColor: Colors.grey,
+              ),
+            ),
+            ListTile(
+              title: const Text('Credits'),
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CreditsWidget(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       backgroundColor: const Color(0xFF2D2C2C),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -1372,74 +1434,85 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: 230,
-                          decoration: BoxDecoration(
-                            color: const Color(0xC0E7A10E),
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: const Color(0xFF2D2C2C),
-                              width: 5,
+                        child: InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const SkywardBladeWidget(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            height: 230,
+                            decoration: BoxDecoration(
+                              color: const Color(0xC0E7A10E),
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: const Color(0xFF2D2C2C),
+                                width: 5,
+                              ),
                             ),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Image.network(
-                                'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_Skyward_Blade.png/revision/latest?cb=20201116035239',
-                                width: 100,
-                                height: 140,
-                                fit: BoxFit.cover,
-                              ),
-                              const Text(
-                                'Skyward Blade',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Image.network(
+                                  'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_Skyward_Blade.png/revision/latest?cb=20201116035239',
+                                  width: 100,
+                                  height: 140,
+                                  fit: BoxFit.cover,
                                 ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Builder(builder: (context) {
-                                    return const Icon(
+                                const Text(
+                                  'Skyward Blade',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Builder(builder: (context) {
+                                      return const Icon(
+                                        Icons.star_outlined,
+                                        color: Color(0xFFE2F009),
+                                        size: 24,
+                                      );
+                                    }),
+                                    const Icon(
                                       Icons.star_outlined,
                                       color: Color(0xFFE2F009),
                                       size: 24,
-                                    );
-                                  }),
-                                  const Icon(
-                                    Icons.star_outlined,
-                                    color: Color(0xFFE2F009),
-                                    size: 24,
-                                  ),
-                                  const Icon(
-                                    Icons.star_outlined,
-                                    color: Color(0xFFE2F009),
-                                    size: 24,
-                                  ),
-                                  const Icon(
-                                    Icons.star_outlined,
-                                    color: Color(0xFFE2F009),
-                                    size: 24,
-                                  ),
-                                  const Icon(
-                                    Icons.star_outlined,
-                                    color: Color(0xFFE2F009),
-                                    size: 24,
-                                  )
-                                ],
-                              ),
-                              const Text(
-                                'Type: Sword',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
+                                    ),
+                                    const Icon(
+                                      Icons.star_outlined,
+                                      color: Color(0xFFE2F009),
+                                      size: 24,
+                                    ),
+                                    const Icon(
+                                      Icons.star_outlined,
+                                      color: Color(0xFFE2F009),
+                                      size: 24,
+                                    ),
+                                    const Icon(
+                                      Icons.star_outlined,
+                                      color: Color(0xFFE2F009),
+                                      size: 24,
+                                    )
+                                  ],
                                 ),
-                              )
-                            ],
+                                const Text(
+                                  'Type: Sword',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
